@@ -18,8 +18,11 @@
         <div class="nav-links">
           <a href="#how-it-works">How it works</a>
           <a href="#modes">Modes</a>
+          <a href="#enchantments">Enchantments</a>
+          <a href="#books">Books</a>
+          <a href="#commands">Commands</a>
           <a href="#configure">Configure</a>
-          <a class="nav-download" href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.11/overbooked-0.2.11.jar">Download</a>
+          <a class="nav-download" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download</a>
         </div>
       </div>
     </nav>
@@ -36,7 +39,7 @@
           <span class="hero-badge">Closed source</span>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.11/overbooked-0.2.11.jar">Download 0.2.11 <span aria-hidden="true">&darr;</span></a>
+          <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download 0.3.0 <span aria-hidden="true">&darr;</span></a>
           <a class="button secondary" href="#how-it-works">Read the docs <span aria-hidden="true">&rarr;</span></a>
         </div>
       </section>
@@ -137,6 +140,60 @@
         <div class="pack-note"><p>To use the model, merge <code>assets/overbooked/</code> into your existing pack and enable <code>custom-station.resource-pack.enabled</code>. Leave it off for a completely functional fallback station with the normal note-block visual.</p></div>
       </section>
 
+      <section id="enchantments" class="section" aria-labelledby="enchant-title">
+        <div class="section-heading">
+          <p class="eyebrow">BUILD YOUR OWN</p>
+          <h2 id="enchant-title">Custom enchantments, owned outright.</h2>
+          <p>Overbooked defines its own enchantments — no other plugin involved. Each one is a trigger, a chance, a cooldown, a level band, conditions, and actions, and every number scales per level.</p>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card"><span class="step">9</span><h3>Triggers</h3><p>Attack, defend, mine, kill, shoot, fish, interact, sneak, plus an interval tick for armour that acts on its own.</p></article>
+          <article class="flow-card"><span class="step">22</span><h3>Actions</h3><p>From heal, repair, and potion effects to lightning, teleports, block breaking, and firing a chicken along your aim.</p></article>
+          <article class="flow-card"><span class="step">15</span><h3>Conditions</h3><p>Health, light, Y level, biome, weather, target type, permission, and more. Each takes bounds and can be inverted.</p></article>
+        </div>
+        <div class="command-card"><span class="command-label">IN-GAME BUILDER</span><code>/overbooked enchant</code></div>
+        <p class="fine-print">Four screens, every click saved straight to disk, 25-step undo, per-enchant enable toggle. Guardrails: explosions never break blocks, spawns cap at ten, area breaking respects protection plugins, and command actions need their own permission.</p>
+        <div class="mode-grid">
+          <article class="mode-card">
+            <p class="card-kicker">WORLDGUARD</p>
+            <h3>Region gating</h3>
+            <p>The <code>overbooked-enchants</code> flag turns firing off inside a region. Defaults to allow; the plugin loads fine without WorldGuard.</p>
+          </article>
+          <article class="mode-card">
+            <p class="card-kicker">PLACEHOLDERAPI</p>
+            <h3>Placeholders</h3>
+            <p><code>%overbooked_count%</code>, <code>names</code>, <code>level_&lt;id&gt;</code>, <code>rarity_&lt;id&gt;</code>, <code>cooldown_&lt;id&gt;</code>, and <code>ready_&lt;id&gt;</code> for the held item.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="books" class="section" aria-labelledby="books-title">
+        <div class="section-heading">
+          <p class="eyebrow">ACQUISITION</p>
+          <h2 id="books-title">Where books come from.</h2>
+          <p>Rarity weights every roll, and all four routes share one picker, so a book from the sea has the same odds as one from a chest. Two identical books merge into one a level higher in the Infusion Anvil; a grindstone strips custom enchantments alongside vanilla ones.</p>
+        </div>
+        <div class="limits-grid">
+          <article><h3>15% table</h3><p>Enchanting table rolls alongside the vanilla result.</p></article>
+          <article><h3>10% chests &middot; 5% fishing</h3><p>Structure loot and treasure-tier catches.</p></article>
+          <article><h3>1% mobs</h3><p>Rare drops from kills, tunable per route in <code>enchant-sources</code>.</p></article>
+        </div>
+        <p class="fine-print">Rarity does not gamble: every bundled tier applies with certainty and destroys nothing. The success and destroy fields exist for servers that want that, and ship off.</p>
+      </section>
+
+      <section id="commands" class="section" aria-labelledby="commands-title">
+        <div class="section-heading">
+          <p class="eyebrow">OPERATIONS</p>
+          <h2 id="commands-title">Commands.</h2>
+        </div>
+        <div class="config-grid">
+          <article class="config-card"><span class="config-icon">/ob</span><h3>menu</h3><p>Live settings: caps, tier costs, policies, presets. Every click saves and applies immediately.</p></article>
+          <article class="config-card"><span class="config-icon">/ob</span><h3>enchant</h3><p>The builder, plus <code>list</code>, <code>create</code>, <code>delete</code>, <code>toggle</code>, and <code>give</code> for console use.</p></article>
+          <article class="config-card"><span class="config-icon">/ob</span><h3>give &middot; restyle &middot; diagnose</h3><p>Hand out a station, redraw a held item&rsquo;s lore, or log exactly why an anvil combination is refused.</p></article>
+        </div>
+        <p class="fine-print">Everything tab-completes. Chat messages live in <code>messages.yml</code> (MiniMessage), with per-key fallback to the bundled defaults.</p>
+      </section>
+
       <section class="install-panel" aria-labelledby="install-title">
         <div>
           <p class="eyebrow">GET STARTED</p>
@@ -147,7 +204,7 @@
             <li>Start once, configure <code>plugins/Overbooked/config.yml</code>, then run <code>/overbooked reload</code>.</li>
           </ol>
         </div>
-        <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.11/overbooked-0.2.11.jar">Download 0.2.11 <span aria-hidden="true">&darr;</span></a>
+        <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download 0.3.0 <span aria-hidden="true">&darr;</span></a>
       </section>
     </main>
 
