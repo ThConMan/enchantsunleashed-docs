@@ -256,6 +256,11 @@ main { width: var(--shell); margin: auto; }
   100% { opacity: 0; transform: translateY(-190px) rotate(var(--spin, 22deg)) scale(1.06); }
 }
 
+/* Holds the logo itself. The artwork ships with its own rounded tile and
+   border, so the placeholder's frame, gradient and inset shading are gone --
+   keeping them double-framed the mark. What stays is the cast glow and the
+   float, which belong to the page rather than to the artwork. The tilt is
+   dropped too: it suited an abstract glyph, but a logo should sit upright. */
 .rune {
   position: relative;
   display: grid;
@@ -263,19 +268,17 @@ main { width: var(--shell); margin: auto; }
   height: 116px;
   place-items: center;
   margin-bottom: 30px;
-  border: 1px solid var(--line-strong);
-  border-radius: 32px;
-  background: linear-gradient(148deg, rgba(185, 139, 255, .2), rgba(95, 137, 242, .14) 60%, rgba(255, 157, 77, .1));
-  box-shadow:
-    0 24px 80px -26px rgba(124, 78, 217, .85),
-    inset 0 1px 0 rgba(255, 255, 255, .1),
-    inset 0 0 42px rgba(185, 139, 255, .16);
-  transform: rotate(-5deg);
+  /* 28% matches the artwork's own corner radius, measured off the source.
+     A percentage rather than a px value so it still lines up at the smaller
+     mobile size. The asset is cropped to its frame, so a mismatch here would
+     either shave the artwork or leave black slivers against the hero wash. */
+  border-radius: 28%;
+  box-shadow: 0 24px 80px -26px rgba(124, 78, 217, .85);
   animation: hover-rune 7s ease-in-out infinite;
 }
 @keyframes hover-rune {
-  0%, 100% { transform: rotate(-5deg) translateY(0); }
-  50%      { transform: rotate(-3.5deg) translateY(-9px); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
 }
 /* Halo pulse - the enchanting table's ambient charge. */
 .rune::after {
@@ -292,14 +295,14 @@ main { width: var(--shell); margin: auto; }
   70%  { box-shadow: 0 0 0 26px rgba(185, 139, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(185, 139, 255, 0); }
 }
-/* The tile is rotated -5deg, so the mark counter-rotates to sit upright.
-   The glow is a drop-shadow on the glyph's actual alpha rather than a box
-   shadow, so it follows the crystal's silhouette instead of a square. */
+/* Clipped to the same radius as the tile: the artwork's own rounded frame is
+   inset inside a square canvas, and without this its near-black corners sit
+   as four dark notches over the hero's violet wash. */
 .rune img {
-  width: 64px;
-  height: 64px;
-  transform: rotate(5deg);
-  filter: drop-shadow(0 0 18px rgba(185, 139, 255, .55)) drop-shadow(0 0 44px rgba(124, 78, 217, .7));
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
 .eyebrow, .card-kicker, .recipe-title, .command-label {
@@ -891,8 +894,7 @@ footer p { margin: 5px 0; }
   .nav-links { gap: 2px; font-size: .78rem; }
   .nav-links a:not(.nav-download) { display: none; }
   .plugin-hero { min-height: 560px; padding-top: 70px; }
-  .rune { width: 96px; height: 96px; border-radius: 26px; }
-  .rune img { width: 54px; height: 54px; }
+  .rune { width: 96px; height: 96px; }
   .statband { grid-template-columns: 1fr; }
   .statband div + div { border-left: 0; border-top: 1px solid var(--line); }
   .loop { grid-template-columns: 1fr; gap: 34px; padding-top: 0; }
