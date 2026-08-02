@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Overbooked documentation for bounded unsafe enchantments on Paper.">
+    <meta name="description" content="Enchants Unleashed documentation: custom enchantments and bounded unsafe progression for Paper.">
     <meta name="theme-color" content="#0b1019">
-    <title>Overbooked | Paper Plugin</title>
+    <title>Enchants Unleashed | Paper Plugin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <body>
     <nav class="nav" aria-label="Primary navigation">
       <div class="nav-inner">
-        <a class="nav-logo" href="#top" aria-label="Overbooked home"><span class="logo-mark">O</span>Over<span>booked</span></a>
+        <a class="nav-logo" href="#top" aria-label="Enchants Unleashed home"><span class="logo-mark">E</span>Enchants&nbsp;<span>Unleashed</span></a>
         <div class="nav-links">
           <a href="#how-it-works">How it works</a>
           <a href="#modes">Modes</a>
@@ -29,19 +29,20 @@
 
     <main id="top">
       <section class="plugin-hero" aria-labelledby="page-title">
-        <div class="rune" aria-hidden="true"><span>O</span></div>
-        <p class="eyebrow">BOUNDED UNSAFE ENCHANTMENTS</p>
-        <h1 id="page-title">Overbooked</h1>
-        <p class="hero-copy">Make endgame gear exciting without letting a few enchantments wreck your server economy.</p>
+        <div class="rune" aria-hidden="true"><span>E</span></div>
+        <p class="eyebrow">CUSTOM ENCHANTMENTS &middot; BOUNDED UNSAFE PROGRESSION</p>
+        <h1 id="page-title">Enchants Unleashed</h1>
+        <p class="hero-copy">Build your own enchantments, and make endgame gear exciting without letting a few levels wreck your server economy.</p>
         <div class="plugin-hero-meta" aria-label="Compatibility">
           <span class="hero-badge">Paper 26.1+</span>
           <span class="hero-badge">Java 25</span>
           <span class="hero-badge">Closed source</span>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download 0.3.0 <span aria-hidden="true">&darr;</span></a>
+          <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download 0.5.2 <span aria-hidden="true">&darr;</span></a>
           <a class="button secondary" href="#how-it-works">Read the docs <span aria-hidden="true">&rarr;</span></a>
         </div>
+        <p class="fine-print">Previously released as <b>Overbooked</b>. Existing installs upgrade in place &mdash; the old data folder is adopted automatically and <code>/ob</code> still works.</p>
       </section>
 
       <section id="how-it-works" class="section" aria-labelledby="how-title">
@@ -83,7 +84,7 @@
           <p class="eyebrow">ENHANCED MODE</p>
           <h2 id="station-title">Netherite Infusion Anvil</h2>
           <p>The crafted station is intentionally expensive but achievable in co-op survival. It is indestructible in use, so there is no normal anvil wear-and-break cycle.</p>
-          <p>When the station and its recipe are enabled, Overbooked automatically adds it to every player's recipe book.</p>
+          <p>When the station and its recipe are enabled, it is added automatically to every player's recipe book.</p>
         </div>
         <div class="recipe-card" aria-label="Netherite Infusion Anvil recipe">
           <p class="recipe-title">CRAFTING RECIPE</p>
@@ -113,7 +114,7 @@
         <div class="section-heading">
           <p class="eyebrow">OPERATIONS</p>
           <h2 id="configure-title">Tune it while players are online.</h2>
-          <p>Operators can run <code>/overbooked</code> or <code>/overbooked menu</code> to make live changes without a restart.</p>
+          <p>Operators can run <code>/eu</code> or <code>/eu menu</code> to make live changes without a restart.</p>
         </div>
         <div class="config-grid">
           <article class="config-card"><span class="config-icon">01</span><h3>Change caps</h3><p>Left and right click adjust a cap by one; Shift-click moves it by five.</p></article>
@@ -135,34 +136,36 @@
         <div class="section-heading">
           <p class="eyebrow">RESOURCE-PACK FRIENDLY</p>
           <h2 id="pack-title">Coexists with your current pack.</h2>
-          <p>The custom model is optional. Overbooked never sends, replaces, or competes with the pack managed by your existing resource-pack plugin.</p>
+          <p>The custom model is optional. Enchants Unleashed never sends, replaces, or competes with the pack managed by your existing resource-pack plugin.</p>
         </div>
-        <div class="pack-note"><p>To use the model, merge <code>assets/overbooked/</code> into your existing pack and enable <code>custom-station.resource-pack.enabled</code>. Leave it off for a completely functional fallback station with the normal note-block visual.</p></div>
+        <div class="pack-note"><p>To use the model, merge <code>assets/overbooked/</code> into your existing pack and enable <code>custom-station.resource-pack.enabled</code>. Leave it off for a completely functional fallback station with the normal note-block visual.</p>
+        <p class="fine-print">That asset path keeps the pre-rename name on purpose: packs already deployed on live servers reference it, and changing it would break them.</p></div>
       </section>
 
       <section id="enchantments" class="section" aria-labelledby="enchant-title">
         <div class="section-heading">
           <p class="eyebrow">BUILD YOUR OWN</p>
           <h2 id="enchant-title">Custom enchantments, owned outright.</h2>
-          <p>Overbooked defines its own enchantments — no other plugin involved. Each one is a trigger, a chance, a cooldown, a level band, conditions, and actions, and every number scales per level.</p>
+          <p>Enchants Unleashed defines its own enchantments &mdash; no other plugin involved. Each one is a trigger, a chance, a cooldown, a level band, conditions, and actions, and every number scales per level.</p>
         </div>
         <div class="flow-grid">
           <article class="flow-card"><span class="step">9</span><h3>Triggers</h3><p>Attack, defend, mine, kill, shoot, fish, interact, sneak, plus an interval tick for armour that acts on its own.</p></article>
-          <article class="flow-card"><span class="step">22</span><h3>Actions</h3><p>From heal, repair, and potion effects to lightning, teleports, block breaking, and firing a chicken along your aim.</p></article>
+          <article class="flow-card"><span class="step">24</span><h3>Actions</h3><p>From heal, repair, and potion effects to lightning, teleports, vein mining, block breaking, and firing a chicken along your aim.</p></article>
           <article class="flow-card"><span class="step">15</span><h3>Conditions</h3><p>Health, light, Y level, biome, weather, target type, permission, and more. Each takes bounds and can be inverted.</p></article>
         </div>
-        <div class="command-card"><span class="command-label">IN-GAME BUILDER</span><code>/overbooked enchant</code></div>
-        <p class="fine-print">Four screens, every click saved straight to disk, 25-step undo, per-enchant enable toggle. Guardrails: explosions never break blocks, spawns cap at ten, area breaking respects protection plugins, and command actions need their own permission.</p>
+        <div class="command-card"><span class="command-label">IN-GAME BUILDER</span><code>/eu enchant</code></div>
+        <p class="fine-print">Four screens, every click saved straight to disk, 25-step undo, per-enchant enable toggle. Guardrails: explosions never break blocks, spawns cap at ten, area and vein breaking respect protection plugins, and command actions need their own permission.</p>
+        <p class="fine-print">Ten ship as working examples, including <b>Trench</b> (3&times;3 mining), <b>Vein Miner</b>, <b>Timber</b>, <b>Grappling Hook</b>, and <b>Chicken Cannon</b>.</p>
         <div class="mode-grid">
           <article class="mode-card">
             <p class="card-kicker">WORLDGUARD</p>
             <h3>Region gating</h3>
-            <p>The <code>overbooked-enchants</code> flag turns firing off inside a region. Defaults to allow; the plugin loads fine without WorldGuard.</p>
+            <p>The <code>enchants-unleashed</code> flag turns firing off inside a region. Defaults to allow; the plugin loads fine without WorldGuard.</p>
           </article>
           <article class="mode-card">
             <p class="card-kicker">PLACEHOLDERAPI</p>
             <h3>Placeholders</h3>
-            <p><code>%overbooked_count%</code>, <code>names</code>, <code>level_&lt;id&gt;</code>, <code>rarity_&lt;id&gt;</code>, <code>cooldown_&lt;id&gt;</code>, and <code>ready_&lt;id&gt;</code> for the held item.</p>
+            <p><code>%enchantsunleashed_count%</code>, <code>names</code>, <code>level_&lt;id&gt;</code>, <code>rarity_&lt;id&gt;</code>, <code>cooldown_&lt;id&gt;</code>, and <code>ready_&lt;id&gt;</code> for the held item.</p>
           </article>
         </div>
       </section>
@@ -187,29 +190,30 @@
           <h2 id="commands-title">Commands.</h2>
         </div>
         <div class="config-grid">
-          <article class="config-card"><span class="config-icon">/ob</span><h3>menu</h3><p>Live settings: caps, tier costs, policies, presets. Every click saves and applies immediately.</p></article>
-          <article class="config-card"><span class="config-icon">/ob</span><h3>enchant</h3><p>The builder, plus <code>list</code>, <code>create</code>, <code>delete</code>, <code>toggle</code>, and <code>give</code> for console use.</p></article>
-          <article class="config-card"><span class="config-icon">/ob</span><h3>give &middot; restyle &middot; diagnose</h3><p>Hand out a station, redraw a held item&rsquo;s lore, or log exactly why an anvil combination is refused.</p></article>
+          <article class="config-card"><span class="config-icon">/eu</span><h3>menu</h3><p>Live settings: caps, tier costs, policies, presets. Every click saves and applies immediately.</p></article>
+          <article class="config-card"><span class="config-icon">/eu</span><h3>enchant</h3><p>The builder, plus <code>list</code>, <code>create</code>, <code>delete</code>, <code>toggle</code>, and <code>give</code> for console use.</p></article>
+          <article class="config-card"><span class="config-icon">/eu</span><h3>give &middot; restyle &middot; diagnose</h3><p>Hand out a station, redraw a held item&rsquo;s lore, or log exactly why an anvil combination is refused.</p></article>
         </div>
-        <p class="fine-print">Everything tab-completes. Chat messages live in <code>messages.yml</code> (MiniMessage), with per-key fallback to the bundled defaults.</p>
+        <p class="fine-print">Full name is <code>/enchantsunleashed</code>; <code>/eu</code> is the short form, and <code>/ob</code> and <code>/overbooked</code> still work from before the rename. Everything tab-completes. Chat messages live in <code>messages.yml</code> (MiniMessage), with per-key fallback to the bundled defaults.</p>
       </section>
 
       <section class="install-panel" aria-labelledby="install-title">
         <div>
           <p class="eyebrow">GET STARTED</p>
-          <h2 id="install-title">Install Overbooked.</h2>
+          <h2 id="install-title">Install Enchants Unleashed.</h2>
           <ol>
             <li>Run a current Paper server on Java 25.</li>
             <li>Copy the JAR into <code>plugins/</code>.</li>
-            <li>Start once, configure <code>plugins/Overbooked/config.yml</code>, then run <code>/overbooked reload</code>.</li>
+            <li>Start once, configure <code>plugins/EnchantsUnleashed/config.yml</code>, then run <code>/eu reload</code>.</li>
           </ol>
+          <p class="fine-print">Upgrading from Overbooked? Drop the new JAR in, delete the old one, and start. <code>plugins/Overbooked/</code> is adopted on first boot, and the old permission nodes keep working.</p>
         </div>
-        <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download 0.3.0 <span aria-hidden="true">&darr;</span></a>
+        <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/latest">Download 0.5.2 <span aria-hidden="true">&darr;</span></a>
       </section>
     </main>
 
     <footer>
-      <p><span class="footer-logo">Over<span>booked</span></span> &middot; Built for controlled endgame progression.</p>
+      <p><span class="footer-logo">Enchants&nbsp;<span>Unleashed</span></span> &middot; Built for controlled endgame progression.</p>
       <p>Public downloads and documentation only. Plugin and resource-pack sources remain private.</p>
     </footer>
   </body>
