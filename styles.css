@@ -264,8 +264,10 @@ main { width: var(--shell); margin: auto; }
 .rune {
   position: relative;
   display: grid;
-  width: 116px;
-  height: 116px;
+  /* Sized to actually carry the hero rather than sit in it -- the old 116px
+     box was scaled for a single letter, which left the real artwork tiny. */
+  width: clamp(168px, 24vw, 248px);
+  height: clamp(168px, 24vw, 248px);
   place-items: center;
   margin-bottom: 30px;
   /* 28% matches the artwork's own corner radius, measured off the source.
@@ -894,7 +896,7 @@ footer p { margin: 5px 0; }
   .nav-links { gap: 2px; font-size: .78rem; }
   .nav-links a:not(.nav-download) { display: none; }
   .plugin-hero { min-height: 560px; padding-top: 70px; }
-  .rune { width: 96px; height: 96px; }
+  .rune { width: clamp(140px, 40vw, 176px); height: clamp(140px, 40vw, 176px); }
   .statband { grid-template-columns: 1fr; }
   .statband div + div { border-left: 0; border-top: 1px solid var(--line); }
   .loop { grid-template-columns: 1fr; gap: 34px; padding-top: 0; }
