@@ -214,6 +214,10 @@ main { width: var(--shell); margin: auto; }
   min-height: 660px;
   padding: 92px 0 74px;
   text-align: center;
+  /* The runefield below deliberately spreads past the content column. clip (not
+     hidden) contains that without creating a scroll container, and without it
+     the hero widens the document on narrow viewports. */
+  overflow-x: clip;
 }
 
 /* Drifting runes. Drawn as SVG rather than set in a font so they cannot
@@ -346,10 +350,12 @@ h1 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  flex-shrink: 0;
   padding: 13px 22px;
   border-radius: 10px;
   font-size: .89rem;
   font-weight: 750;
+  white-space: nowrap;
   text-decoration: none;
   transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
 }
@@ -425,6 +431,15 @@ h2 { margin: 10px 0 16px; font-size: clamp(2rem, 4.1vw, 3.3rem); line-height: 1.
 h3 { margin-bottom: 10px; font-size: 1.1rem; line-height: 1.25; letter-spacing: -.02em; }
 .section-heading > p:last-child, .station-copy > p, .name-styling p { color: var(--text-dim); }
 .fine-print { margin: 18px 0 0; color: var(--text-faint); font-size: .87rem; }
+
+/* Grid and flex children default to min-width:auto, so one unbreakable string --
+   the MiniMessage tag in the style card, a long placeholder name -- sizes its
+   whole track to min-content and pushes the page wider than the viewport.
+   Overriding to 0 lets those elements scroll or wrap inside their own box. */
+.station > *, .name-styling > *, .builder-inner > *,
+.bento > *, .mode-grid > *, .config-grid > *,
+.limits-row > *, .rate-row > *, .command-card > * { min-width: 0; }
+.code-card code, .command-card code { max-width: 100%; }
 
 /* Shared card shading. Layered: a hairline top highlight for the lit edge, a
    hue-tinted drop shadow for the mass, and a soft inner floor. */
@@ -579,7 +594,8 @@ h3 { margin-bottom: 10px; font-size: 1.1rem; line-height: 1.25; letter-spacing: 
     inset 0 0 0 1px var(--line-strong),
     0 10px 22px -8px rgba(124, 78, 217, .8);
 }
-.recipe-grid .empty { background: transparent; box-shadow: none; }
+/* Empty slots stay drawn. A real crafting grid always shows all nine, and
+   hiding them turned the recipe into a floating cross. */
 /* Item icons. These are not approximations: the two flat item textures are the
    vanilla 16x16 PNGs transcribed pixel-for-pixel into rects, and the anvil is
    the real block model (template_anvil.json) projected the way the inventory
@@ -747,18 +763,20 @@ h3 { margin-bottom: 10px; font-size: 1.1rem; line-height: 1.25; letter-spacing: 
 }
 .code-card span { display: block; margin-bottom: 15px; color: var(--glint-bright); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
 .code-card code { display: block; overflow-x: auto; padding-bottom: 4px; color: #fff; font-size: .8rem; white-space: nowrap; }
-/* A live sample of what the tag above produces. */
-.style-demo {
+/* A live sample of what the tag above produces. The stops are the literal hex
+   values from the MiniMessage tag, and it deliberately does not animate: this
+   is documentation, so it has to show exactly what the tag renders. */
+/* Scoped to .code-card so it outranks `.name-styling p`, which would otherwise
+   win on specificity and repaint the text opaque, hiding the gradient. */
+.code-card .style-demo {
   margin-top: 18px;
   font-size: 1.5rem;
   font-weight: 750;
   letter-spacing: -.02em;
   background: linear-gradient(92deg, #55ddff, #a855f7);
-  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: sweep 6s ease-in-out infinite;
 }
 
 .pack-note {
