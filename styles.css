@@ -35,9 +35,17 @@
   --ember-bright: #ffc78a;
   --ember-deep:   #c85f1c;
 
+  /* Pushed well past the WCAG AA floor on purpose. AA (4.5:1) is a minimum for
+     legibility, not a target for comfort, and light-on-dark body copy sitting
+     near the floor reads as washed-out grey. --text-faint was #7e7293, which
+     measured 3.99:1 on --surface-2 and actually failed AA outright. Measured on
+     --surface-2, the lightest surface any of them sits on:
+       --text        16.1:1
+       --text-dim    10.7:1   body copy
+       --text-faint   6.9:1   captions and small labels */
   --text:       #f4effb;
-  --text-dim:   #b3a6ca;
-  --text-faint: #7e7293;
+  --text-dim:   #cfc4e2;
+  --text-faint: #a99cc0;
 
   --line:        rgba(150, 116, 210, .17);
   --line-mid:    rgba(163, 128, 224, .3);
@@ -69,7 +77,9 @@ body {
   color: var(--text);
   background: var(--void);
   font: 400 16px/1.7 Inter, system-ui, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* Deliberately NOT -webkit-font-smoothing: antialiased. On a dark ground it
+     strips the subpixel weight off light text, so greys render thinner and
+     noticeably fainter than their computed contrast implies. */
 }
 
 /* Ambient ground. Fixed so it behaves like a backdrop the content moves over,
@@ -376,7 +386,10 @@ h1 {
 .button:hover::before { left: 130%; }
 .button.primary {
   color: #2a1103;
-  background: linear-gradient(118deg, var(--ember-bright), var(--ember) 55%, var(--ember-deep));
+  /* Ends on #d4691f rather than --ember-deep: the darker stop put the dark
+     label at 4.33:1 over the bottom of the button, just under AA. 4.95:1 now,
+     same shading direction. */
+  background: linear-gradient(118deg, var(--ember-bright), var(--ember) 58%, #d4691f);
   box-shadow: 0 10px 30px -10px rgba(255, 157, 77, .55), inset 0 1px 0 rgba(255, 255, 255, .4);
 }
 .button.primary:hover { box-shadow: 0 18px 42px -12px rgba(255, 157, 77, .7), inset 0 1px 0 rgba(255, 255, 255, .45); }
