@@ -113,14 +113,50 @@ h3 { margin-bottom: 9px; font-size: 1.1rem; line-height: 1.25; letter-spacing: -
 .station { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 62px; }
 .recipe-card { padding: 29px; border-radius: 16px; }
 .recipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 280px; margin: 20px auto; }
-.recipe-grid span { display: grid; aspect-ratio: 1; place-items: center; border: 1px solid rgba(114, 142, 178, .4); border-radius: 8px; background: rgba(8, 14, 22, .64); }
-.recipe-grid .empty { border-color: transparent; background: transparent; }
-.shard::after { width: 48%; height: 48%; content: ""; border-radius: 48% 48% 52% 52%; background: linear-gradient(135deg, #d7b9ff, #8d61d6 75%); box-shadow: 0 0 13px rgba(190, 140, 255, .75); }
-.ingot::after { width: 58%; height: 48%; content: ""; border-radius: 3px; background: linear-gradient(135deg, #c8d2d7, #54666e); box-shadow: 0 0 10px rgba(175, 200, 211, .35); }
-.anvil-item::after { width: 64%; height: 50%; content: ""; border-radius: 3px 3px 9px 9px; background: linear-gradient(#7d98a8 0 28%, #354755 29% 55%, #627985 56%); box-shadow: 0 0 10px rgba(85, 221, 255, .2); }
+/* Inventory slots: square with a bevel, light top-left and dark bottom-right,
+   the way Minecraft's own slots are shaded. Kept in the site palette rather
+   than vanilla grey so it does not fight the rest of the page. */
+.recipe-grid span {
+  display: grid; aspect-ratio: 1; place-items: center;
+  border-radius: 3px;
+  background: rgba(8, 14, 22, .72);
+  box-shadow: inset 2px 2px 0 rgba(150, 178, 210, .22),
+              inset -2px -2px 0 rgba(0, 0, 0, .45),
+              inset 0 0 0 1px rgba(114, 142, 178, .3);
+}
+.recipe-grid .empty { background: transparent; box-shadow: none; }
+/* Item icons are drawn on a 16x16 grid, the same one Minecraft draws its item
+   textures on. crispEdges + pixelated keeps the blocky edges from being
+   smoothed into mush when the cells scale up. */
+.shard::after, .ingot::after, .anvil-item::after {
+  width: 74%; height: 74%; content: "";
+  background-repeat: no-repeat; background-position: center; background-size: contain;
+  image-rendering: pixelated;
+}
+.shard::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='7' y='2' width='2' height='2' fill='%23e2d2fb'/><rect x='6' y='4' width='2' height='3' fill='%23b494e8'/><rect x='8' y='4' width='2' height='3' fill='%238b62c9'/><rect x='5' y='7' width='3' height='4' fill='%23a880e0'/><rect x='8' y='7' width='3' height='4' fill='%237a52b8'/><rect x='6' y='11' width='2' height='2' fill='%238b62c9'/><rect x='8' y='11' width='2' height='2' fill='%23653f99'/></svg>");
+  filter: drop-shadow(0 0 6px rgba(190, 140, 255, .55));
+}
+.ingot::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='4' y='5' width='8' height='1' fill='%238e8087'/><rect x='4' y='6' width='8' height='1' fill='%236e6167'/><rect x='3' y='7' width='10' height='3' fill='%234a4046'/><rect x='2' y='10' width='12' height='1' fill='%23393137'/><rect x='2' y='11' width='12' height='1' fill='%232c262b'/></svg>");
+  filter: drop-shadow(0 0 5px rgba(175, 200, 211, .25));
+}
+.anvil-item::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='2' y='2' width='12' height='1' fill='%23767676'/><rect x='2' y='3' width='12' height='2' fill='%235a5a5a'/><rect x='3' y='5' width='10' height='1' fill='%23484848'/><rect x='5' y='6' width='6' height='3' fill='%23414141'/><rect x='4' y='9' width='8' height='1' fill='%234a4a4a'/><rect x='3' y='10' width='10' height='3' fill='%23515151'/><rect x='3' y='13' width='10' height='1' fill='%23343434'/></svg>");
+  filter: drop-shadow(0 0 5px rgba(85, 221, 255, .18));
+}
 .recipe-key { margin: 0; color: var(--text-muted); font-size: .72rem; text-align: center; }
-.key-swatch { display: inline-block; width: 8px; height: 8px; margin-left: 8px; border-radius: 50%; }
-.shard-key { background: #b681ff; }.ingot-key { background: #afc0ca; }.anvil-key { background: #607782; }
+/* The legend shows the same 16x16 art as the grid, shrunk, so the key and the
+   recipe cannot drift apart. */
+.key-swatch {
+  display: inline-block; width: 15px; height: 15px; margin-left: 8px;
+  vertical-align: -3px;
+  background-repeat: no-repeat; background-position: center; background-size: contain;
+  image-rendering: pixelated;
+}
+.shard-key { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='7' y='2' width='2' height='2' fill='%23e2d2fb'/><rect x='6' y='4' width='2' height='3' fill='%23b494e8'/><rect x='8' y='4' width='2' height='3' fill='%238b62c9'/><rect x='5' y='7' width='3' height='4' fill='%23a880e0'/><rect x='8' y='7' width='3' height='4' fill='%237a52b8'/><rect x='6' y='11' width='2' height='2' fill='%238b62c9'/><rect x='8' y='11' width='2' height='2' fill='%23653f99'/></svg>"); }
+.ingot-key { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='4' y='5' width='8' height='1' fill='%238e8087'/><rect x='4' y='6' width='8' height='1' fill='%236e6167'/><rect x='3' y='7' width='10' height='3' fill='%234a4046'/><rect x='2' y='10' width='12' height='1' fill='%23393137'/><rect x='2' y='11' width='12' height='1' fill='%232c262b'/></svg>"); }
+.anvil-key { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='2' y='2' width='12' height='1' fill='%23767676'/><rect x='2' y='3' width='12' height='2' fill='%235a5a5a'/><rect x='3' y='5' width='10' height='1' fill='%23484848'/><rect x='5' y='6' width='6' height='3' fill='%23414141'/><rect x='4' y='9' width='8' height='1' fill='%234a4a4a'/><rect x='3' y='10' width='10' height='3' fill='%23515151'/><rect x='3' y='13' width='10' height='1' fill='%23343434'/></svg>"); }
 
 .limits-grid { grid-template-columns: repeat(3, 1fr); }
 .limits-grid article, .config-card { padding: 24px; border-radius: 13px; }
