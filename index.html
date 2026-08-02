@@ -18,7 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Version query busts the browser/CDN cache when the stylesheet changes.
+         Without it the logo work lands but the old .rune framing sticks. -->
+    <link rel="stylesheet" href="styles.css?v=2">
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
