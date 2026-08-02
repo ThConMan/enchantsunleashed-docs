@@ -167,6 +167,15 @@
             <h3>Placeholders</h3>
             <p><code>%enchantsunleashed_count%</code>, <code>names</code>, <code>level_&lt;id&gt;</code>, <code>rarity_&lt;id&gt;</code>, <code>cooldown_&lt;id&gt;</code>, and <code>ready_&lt;id&gt;</code> for the held item.</p>
           </article>
+
+          <figure class="demo card-surface reveal" data-d="3">
+            <picture>
+              <source srcset="media/custom-enchant.png" media="(prefers-reduced-motion: reduce)">
+              <img src="media/custom-enchant.gif" width="720" height="405" loading="lazy" decoding="async"
+                   alt="The Infusion Anvil applying Chicken Cannon I to a Netherite Spear: the book's description and rarity, then the enchantment cost, then the finished item.">
+            </picture>
+            <figcaption>One of the bundled ten going onto a weapon. <b>Chicken Cannon</b> carries its own description, rarity, and level cap, and the cost is charged before the item leaves the slot.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -234,10 +243,20 @@
           <h2 id="styling-title">Give legendary items a proper name.</h2>
           <p>The station can style renamed items with colors, preset gradients, and Unicode Small Caps. Its MiniMessage input accepts safe color, gradient, and decoration tags only; interactive tags are rejected.</p>
         </div>
-        <div class="code-card reveal" data-d="2">
-          <span>STYLE EXAMPLE</span>
-          <code>&lt;gradient:#55ddff:#a855f7&gt;Stormbreaker&lt;/gradient&gt;</code>
-          <p class="style-demo" aria-hidden="true">Stormbreaker</p>
+        <div class="styling-stack">
+          <div class="code-card reveal" data-d="2">
+            <span>STYLE EXAMPLE</span>
+            <code>&lt;gradient:#55ddff:#a855f7&gt;Stormbreaker&lt;/gradient&gt;</code>
+            <p class="style-demo" aria-hidden="true">Stormbreaker</p>
+          </div>
+          <figure class="demo reveal" data-d="3">
+            <picture>
+              <source srcset="media/name-styling.png" media="(prefers-reduced-motion: reduce)">
+              <img src="media/name-styling.gif" width="720" height="405" loading="lazy" decoding="async"
+                   alt="The Name Styling screen with Small Caps and Bold toggling on, the Aqua-Purple Gradient preset, a live preview of the styled item name, then the colour palette.">
+            </picture>
+            <figcaption>Toggles and gradient presets apply in place, with a live preview of the name before you commit to it.</figcaption>
+          </figure>
         </div>
       </section>
 
