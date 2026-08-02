@@ -158,15 +158,16 @@ code {
   background-clip: text;
   color: transparent;
 }
+/* Holds the logo mark. The padding keeps the glyph off the rounded border --
+   without it the crystal's point collides with the corner radius. */
 .logo-mark {
-  display: grid;
+  display: block;
   width: 28px;
   height: 28px;
-  place-items: center;
+  padding: 3px;
+  object-fit: contain;
   border: 1px solid var(--line-strong);
   border-radius: 9px;
-  color: var(--glint-bright);
-  font: 600 .8rem/1 "JetBrains Mono", monospace;
   background: linear-gradient(150deg, rgba(185, 139, 255, .22), rgba(95, 137, 242, .1));
   box-shadow: inset 0 0 18px rgba(185, 139, 255, .3), 0 4px 14px -6px rgba(124, 78, 217, .7);
 }
@@ -291,11 +292,14 @@ main { width: var(--shell); margin: auto; }
   70%  { box-shadow: 0 0 0 26px rgba(185, 139, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(185, 139, 255, 0); }
 }
-.rune span {
-  color: #fff;
-  font: 600 3.7rem/1 "JetBrains Mono", monospace;
-  text-shadow: 0 0 26px var(--glint), 0 0 60px rgba(124, 78, 217, .8);
+/* The tile is rotated -5deg, so the mark counter-rotates to sit upright.
+   The glow is a drop-shadow on the glyph's actual alpha rather than a box
+   shadow, so it follows the crystal's silhouette instead of a square. */
+.rune img {
+  width: 64px;
+  height: 64px;
   transform: rotate(5deg);
+  filter: drop-shadow(0 0 18px rgba(185, 139, 255, .55)) drop-shadow(0 0 44px rgba(124, 78, 217, .7));
 }
 
 .eyebrow, .card-kicker, .recipe-title, .command-label {
@@ -888,7 +892,7 @@ footer p { margin: 5px 0; }
   .nav-links a:not(.nav-download) { display: none; }
   .plugin-hero { min-height: 560px; padding-top: 70px; }
   .rune { width: 96px; height: 96px; border-radius: 26px; }
-  .rune span { font-size: 3rem; }
+  .rune img { width: 54px; height: 54px; }
   .statband { grid-template-columns: 1fr; }
   .statband div + div { border-left: 0; border-top: 1px solid var(--line); }
   .loop { grid-template-columns: 1fr; gap: 34px; padding-top: 0; }
